@@ -2,13 +2,9 @@
 /dist
 /node_modules
 /src
-/docker
 /upload/image/*
 /upload/video/*
 /upload/other/*
-
-docker-compose.yml
-
 
 .env.local
 .env.development
