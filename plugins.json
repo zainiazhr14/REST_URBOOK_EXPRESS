@@ -1,0 +1,22 @@
+{
+  "monorepo": [
+    {
+      "plugin": "user"
+    },
+    {
+      "plugin": "auth"
+    },
+    {
+      "plugin": "book"
+    },
+    {
+      "plugin": "writer"
+    },
+    {
+      "plugin": "favorite"
+    },
+    {
+      "plugin": "file"
+    }
+  ]
+}
