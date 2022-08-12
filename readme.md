@@ -30,6 +30,15 @@ npm run local
 
 ```
 
+### Development (In Your Development mode)
+```javascript
+// Create .env.development if on development mode
+
+// on local
+npm run development
+
+```
+
 ### DOCKER COMPOSE(Run With Docker COMPOSE)
 ```javascript
 docker-compose up
