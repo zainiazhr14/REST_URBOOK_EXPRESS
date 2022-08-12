@@ -71,7 +71,7 @@ module.exports = (routes: any) => {
         const { error, data } = await fileREST.create(req);
 
         if (error) {
-          return res.status(401).send('Bad Request');
+          return res.status(400).send('Bad Request');
         }
 
         return res.send(data);

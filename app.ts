@@ -1,6 +1,6 @@
 import express from 'express'
 import os from 'os'
-import db from './driver/database/mongodb/config'
+// import db from './driver/database/mongodb/config'
 import listEndpoints from 'express-list-endpoints'
 import { AddressInfo } from 'net'
 
@@ -8,7 +8,7 @@ if (!process.env.APP_PORT) {
   process.exit(1)
 }
 
-require('./driver/database/mongodb/config').db
+// require('./driver/database/mongodb/config').db
 
 const interfaces = os.networkInterfaces()
 let addresses: string[] = []
@@ -28,7 +28,7 @@ const start = async () => {
   // plugin
   await require('./app-package')(app)
   await require('./app-plugins')(app)
-  db
+  // db
   console.table(listEndpoints(app))
 }
 

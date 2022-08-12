@@ -28,7 +28,7 @@ module.exports = (routes: any) => {
       }
 
       if (!userData.is_active) {
-        return res.status(403).send('User Suspended');
+        return res.status(400).send('User Suspended');
       }
 
       const isMatch = userData.comparePassword(password);

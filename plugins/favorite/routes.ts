@@ -13,7 +13,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await FavoriteREST.list(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -27,7 +27,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await FavoriteREST.get(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -41,7 +41,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await FavoriteREST.create(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -55,7 +55,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await FavoriteREST.update(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -69,7 +69,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await FavoriteREST.remove(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);

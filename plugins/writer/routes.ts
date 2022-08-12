@@ -13,7 +13,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await WriterREST.list(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -27,7 +27,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await WriterREST.get(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -41,7 +41,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await WriterREST.create(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -55,7 +55,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await WriterREST.update(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -68,7 +68,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await WriterREST.remove(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);

@@ -13,7 +13,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await BookREST.list(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -27,7 +27,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await BookREST.get(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -41,7 +41,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await BookREST.create(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -55,7 +55,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await BookREST.update(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);
@@ -70,7 +70,7 @@ module.exports = (routes: any) => {
     try {
       const { error, data } = await BookREST.remove(req);
       if (error) {
-        return res.status(401).send('Bad Request');
+        return res.status(400).send('Bad Request');
       }
 
       return res.status(200).send(data);

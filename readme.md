@@ -35,32 +35,6 @@ npm run local
 docker-compose up
 ```
 
-Connection to DB Remote Server
-on database.js
-```javascript
-const tunnel = require('tunnel-ssh');
-
-const configTunnel = {
-	username: '',
-	password: '',
-	host: '',
-	port: 22,
-	dstPort: 27017,
-	localPort: 2000
-};
-
-tunnel(configTunnel, function (error, server) {
-	if(error){
-		console.log("SSH connection error: " + error);
-	}
-	// load database
-	mongoose.connect('mongodb://localhost:2000/'+config.db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true
-	});
-});
-```
 
 API documentation on
 ```javascript
