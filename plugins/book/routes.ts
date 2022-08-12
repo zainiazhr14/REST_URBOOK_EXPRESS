@@ -1,5 +1,41 @@
 import { Request, Response } from "express";
+import {
+  ContainerTypes,
+  // Use this as a replacement for express.Request
+  ValidatedRequest,
+  // Extend from this to define a valid schema type/interface
+  ValidatedRequestSchema,
+  // Creates a validator that generates middlewares
+  createValidator
+} from 'express-joi-validation';
+import * as Joi from 'joi';
 import RESTful from '../../driver/database/postgresql/rest';
+
+const validator = createValidator()
+
+
+const querySchemaGlobal = Joi.object({
+  q: Joi.string(),
+  search: Joi.string(),
+  populate: Joi.string(),
+  limit: Joi.string(),
+  page: Joi.string(),
+  sort: Joi.string(),
+})
+
+const paramsIdSchema = Joi.object({
+  id: Joi.string().required()
+})
+
+const payloadSchema = Joi.object({
+  title: Joi.string().required(),
+  writer_id: Joi.string().required(),
+  cover: Joi.string().required(),
+  description: Joi.string().required(),
+  total_page: Joi.number().required(),
+  rate: Joi.number().required(),
+  gender: Joi.array().items(Joi.string()),
+})
 
 
 const BookREST = new RESTful('book', 'Book');
@@ -9,7 +45,7 @@ BookREST.populate = {
 
 module.exports = (routes: any) => {
   // list
-  routes.get('/', async (req: Request, res: Response) => {
+  routes.get('/', validator.query(querySchemaGlobal), async (req: Request, res: Response) => {
     try {
       const { error, data } = await BookREST.list(req);
       if (error) {
@@ -23,7 +59,7 @@ module.exports = (routes: any) => {
   })
 
   // Get One
-  routes.get('/:id', async (req: Request, res: Response) => {
+  routes.get('/:id', validator.query(querySchemaGlobal), validator.params(paramsIdSchema), async (req: Request, res: Response) => {
     try {
       const { error, data } = await BookREST.get(req);
       if (error) {
@@ -37,7 +73,7 @@ module.exports = (routes: any) => {
   })
 
   // Create
-  routes.post('/', async (req: Request, res: Response) => {
+  routes.post('/', validator.body(payloadSchema), async (req: Request, res: Response) => {
     try {
       const { error, data } = await BookREST.create(req);
       if (error) {
@@ -51,7 +87,7 @@ module.exports = (routes: any) => {
   })
 
   // Update
-  routes.put('/:id', async (req: Request, res: Response) => {
+  routes.put('/:id', validator.body(payloadSchema), validator.params(paramsIdSchema), async (req: Request, res: Response) => {
     try {
       const { error, data } = await BookREST.update(req);
       if (error) {
@@ -66,7 +102,7 @@ module.exports = (routes: any) => {
 
 
   // Delete
-  routes.delete('/:id', async (req: Request, res: Response) => {
+  routes.delete('/:id', validator.params(paramsIdSchema), async (req: Request, res: Response) => {
     try {
       const { error, data } = await BookREST.remove(req);
       if (error) {

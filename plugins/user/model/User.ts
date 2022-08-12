@@ -34,6 +34,9 @@ const User = sequelize.define(modelName, {
     type: DataTypes.BOOLEAN,
     default: false
   },
+  profile: {
+    type: DataTypes.STRING
+  }
 }, {
   tableName: tableName,
   underscored: true,
