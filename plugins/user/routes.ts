@@ -34,7 +34,7 @@ const payloadSchema = Joi.object({
   password: Joi.string().optional(),
   role: Joi.string().optional(),
   is_active: Joi.boolean().required(),
-  profile: Joi.string().required()
+  profile: Joi.string().optional()
 })
 
 

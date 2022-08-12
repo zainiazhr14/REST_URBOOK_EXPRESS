@@ -34,7 +34,7 @@ const payloadSchema = Joi.object({
   description: Joi.string().required(),
   total_page: Joi.number().required(),
   rate: Joi.number().required(),
-  gender: Joi.array().items(Joi.string()),
+  genre: Joi.array().items(Joi.string()),
 })
 
 
